@@ -129,6 +129,7 @@ celerybeat.pid
 
 # Environments
 .env
+.datasplits
 .venv
 env/
 venv/
