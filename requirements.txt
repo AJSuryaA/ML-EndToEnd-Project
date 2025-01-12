@@ -4,4 +4,5 @@ seaborn
 scikit-learn
 matplotlib
 plotly
--e .
+dill
+#-e .
