@@ -31,7 +31,7 @@ class DataTransformation:
         '''
 
         try:
-            numerical_columns= ["writing_score","reading_score"],
+            numerical_columns= ["writing_score","reading_score"]
             categorical_columns=[
                 "gender",
                 "race_ethnicity",
@@ -51,7 +51,7 @@ class DataTransformation:
                 steps=[
                     ("imputer", SimpleImputer(strategy= "most_frequent")),
                     ("encoder", OneHotEncoder()),
-                    ("scaler", StandardScaler(with_mean= False))
+                    # ("scaler", StandardScaler(with_mean= False))
                 ]
             )
 
@@ -91,6 +91,8 @@ class DataTransformation:
             target_feature_test_df= test_df[target_column]
 
             logging.info("--applying preprocessing obj on train and test df-- --started--")
+            # logging.info(f"Type of data: {type(input_feature_test_df)}")
+
 
             input_feature_train_array= preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_array= preprocessing_obj.transform(input_feature_test_df)
@@ -111,6 +113,8 @@ class DataTransformation:
                 obj= preprocessing_obj
             )
 
+            logging.info("--save preeprocessing object-- --completed--")
+
             return(
                 train_array,
                 test_array,
@@ -118,4 +122,4 @@ class DataTransformation:
             )
 
         except Exception as e:
-            return CustomException(e, sys)
+            raise CustomException(e, sys)
