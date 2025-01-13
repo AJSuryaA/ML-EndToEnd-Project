@@ -5,4 +5,7 @@ scikit-learn
 matplotlib
 plotly
 dill
+xgboost
+catboost
+flask
 #-e .
